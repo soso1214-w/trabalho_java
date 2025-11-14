@@ -1,0 +1,74 @@
+package br.com.banco;
+
+
+public class BancoApp {
+   public static void main(String[] args) {
+       System.out.println("=== SISTEMA BANCÁRIO INICIADO ===\n");
+
+
+       // Criando contas
+       ContaCorrente contaCorrente = new ContaCorrente(123, "Sofia", 1000.0);
+       ContaPoupanca contaPoupanca = new ContaPoupanca(124, "Carlos", 500.0);
+
+
+       // Exibindo extrato inicial
+       System.out.println("** Extrato inicial **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       // ------------------ DEPÓSITOS ------------------
+       System.out.println("\n** Realizando depósitos **");
+       contaCorrente.depositar(300.0);
+       contaPoupanca.depositar(200.0);
+
+
+       System.out.println("\n** Extrato após depósitos **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       // ------------------ SAQUES ------------------
+       System.out.println("\n** Realizando saques **");
+       try {
+           contaCorrente.sacar(400.0); // Saque válido
+           contaPoupanca.sacar(900.0); // Saque inválido (saldo insuficiente)
+       } catch (SaldoInsuficienteException e) {
+           System.out.println("Erro ao sacar: " + e.getMessage());
+       }
+
+
+       System.out.println("\n** Extrato após saques **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       // ------------------ TRANSFERÊNCIA ------------------
+       System.out.println("\n** Realizando transferência **");
+       try {
+           contaCorrente.transferir(contaPoupanca, 250.0);
+       } catch (SaldoInsuficienteException e) {
+           System.out.println("Erro na transferência: " + e.getMessage());
+       }
+
+
+       System.out.println("\n** Extrato após transferência **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       // ------------------ ATUALIZAÇÃO DE SALDO ------------------
+       System.out.println("\n** Atualizando saldo das contas **");
+       contaCorrente.atualizarSaldo();
+       contaPoupanca.atualizarSaldo();
+
+
+       // ------------------ EXTRATO FINAL ------------------
+       System.out.println("\n** Extrato final **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       System.out.println("\n=== FIM DO SISTEMA BANCÁRIO ===");
+   }
+}
