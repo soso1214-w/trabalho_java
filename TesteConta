@@ -1,0 +1,89 @@
+package br.com.banco;
+
+
+public class TesteConta {
+   public static void main(String[] args) {
+       System.out.println("=== TESTE DE CONTA BANCÁRIA ===");
+
+
+       // ==========================================================
+       // TESTE ATIVO — Teste básico de criação e extrato
+       // ==========================================================
+       ContaCorrente contaCorrente = new ContaCorrente(123, "Sofia", 1000.0);
+       ContaPoupanca contaPoupanca = new ContaPoupanca(124, "Carlos", 500.0);
+
+
+       System.out.println("\n** Extrato inicial **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+
+
+       // ==========================================================
+       // TESTES ANTERIORES (comentados abaixo)
+       // ==========================================================
+
+
+       /*
+       // TESTE 2 — Depósito
+       // Verifica se o método depositar atualiza corretamente o saldo.
+       contaCorrente.depositar(300.0);
+       contaPoupanca.depositar(200.0);
+
+
+       System.out.println("\n** Extrato após depósitos **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+       */
+
+
+       /*
+       // TESTE 3 — Saque com tratamento de exceção
+       // Lança SaldoInsuficienteException se o valor for maior que o saldo.
+       try {
+           contaCorrente.sacar(400.0); // Saque válido
+           contaPoupanca.sacar(900.0); // Saque inválido (saldo insuficiente)
+       } catch (SaldoInsuficienteException e) {
+           System.out.println("Erro ao sacar: " + e.getMessage());
+       }
+
+
+       System.out.println("\n** Extrato após saques **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+       */
+
+
+       /*
+       // TESTE 4 — Transferência entre contas
+       // Verifica se a transferência funciona corretamente.
+       try {
+           contaCorrente.transferir(contaPoupanca, 250.0);
+       } catch (SaldoInsuficienteException e) {
+           System.out.println("Erro na transferência: " + e.getMessage());
+       }
+
+
+       System.out.println("\n** Extrato após transferência **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+       */
+
+
+       /*
+       // TESTE 5 — Atualização de Saldo
+       // Conta Corrente aplica taxa de 0.5%
+       // Conta Poupança aplica rendimento de 0.3%
+       contaCorrente.atualizarSaldo();
+       contaPoupanca.atualizarSaldo();
+
+
+       System.out.println("\n** Extrato após atualização de saldo **");
+       contaCorrente.imprimirExtrato();
+       contaPoupanca.imprimirExtrato();
+       */
+
+
+       System.out.println("\n=== FIM DO TESTE ===");
+   }
+}
+
